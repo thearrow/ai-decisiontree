@@ -12,7 +12,7 @@ public class Attribute {
         return value;
     }
 
-    public String toString(){
+    public String toString() {
         return this.value;
     }
 

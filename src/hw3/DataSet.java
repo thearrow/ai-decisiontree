@@ -41,30 +41,30 @@ public class DataSet {
         ArrayList<DecisionTree> result = new ArrayList<DecisionTree>();
         ArrayList<Example> tempExamples = examples;
 
-            for (int i = 0; i < tempExamples.size(); i++) {
-                DataSet data = new DataSet();
+        for (int i = 0; i < tempExamples.size(); i++) {
+            DataSet data = new DataSet();
 
-                Example outer = tempExamples.remove(i);
-                String attValue = outer.getAttribute(a).getValue().trim();
-                data.addExample(outer);
-                for (int j = i; j < tempExamples.size(); j++) {
-                    Example temp = tempExamples.get(j);
-                    if (temp.getAttribute(a).getValue().trim().equalsIgnoreCase(attValue)) {
-                        data.addExample(tempExamples.remove(j));
-                        //decrement j to compensate for removal
-                        j--;
-                    }
+            Example outer = tempExamples.remove(i);
+            String attValue = outer.getAttribute(a).getValue().trim();
+            data.addExample(outer);
+            for (int j = i; j < tempExamples.size(); j++) {
+                Example temp = tempExamples.get(j);
+                if (temp.getAttribute(a).getValue().trim().equalsIgnoreCase(attValue)) {
+                    data.addExample(tempExamples.remove(j));
+                    //decrement j to compensate for removal
+                    j--;
                 }
-                //decrement i to compensate for removal
-                i--;
-                DecisionTree tree = new DecisionTree(data);
-                result.add(tree);
             }
+            //decrement i to compensate for removal
+            i--;
+            DecisionTree tree = new DecisionTree(data);
+            result.add(tree);
+        }
 
         return result;
     }
 
-    public int size(){
+    public int size() {
         return examples.size();
     }
 
@@ -78,4 +78,5 @@ public class DataSet {
         }
         return sb.toString();
     }
+
 }

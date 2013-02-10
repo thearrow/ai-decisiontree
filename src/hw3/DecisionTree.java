@@ -18,4 +18,5 @@ public class DecisionTree {
         DataSet copy = DataSet.duplicate(root);
         children = copy.splitOnAttributeIndex(a);
     }
+
 }

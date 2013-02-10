@@ -3,16 +3,17 @@ package hw3;
 import java.util.ArrayList;
 
 public class Example {
+
     ArrayList<Attribute> attributes;
     private String target;
 
     public Example(String str) {
         attributes = new ArrayList<Attribute>();
         String[] attrs = str.split(",");
-        for (int i=0;i<attrs.length-1;i++) {
+        for (int i = 0; i < attrs.length - 1; i++) {
             this.addAttribute(attrs[i]);
         }
-        target = attrs[attrs.length-1];
+        target = attrs[attrs.length - 1];
     }
 
     public void addAttribute(String value) {
@@ -44,8 +45,5 @@ public class Example {
 
         return result.toString();
     }
-
-
-
 
 }
