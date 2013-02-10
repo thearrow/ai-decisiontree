@@ -24,6 +24,8 @@ public class Main {
             e.printStackTrace();
         }
 
+        DecisionTree tree = new DecisionTree(data);
+        tree.splitOnAttributeIndex(1);
         System.out.println(data);
 
     }

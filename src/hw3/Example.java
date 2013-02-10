@@ -28,6 +28,10 @@ public class Example {
         this.target = target;
     }
 
+    public Attribute getAttribute(int a) {
+        return attributes.get(a);
+    }
+
     public String toString() {
         StringBuilder result = new StringBuilder();
         for (Attribute a : attributes) {
