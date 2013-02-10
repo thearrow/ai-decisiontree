@@ -25,7 +25,7 @@ public class Main {
         }
 
         DecisionTree tree = new DecisionTree(data);
-        tree.splitOnAttributeIndex(1);
+        tree.splitOnAttributeIndex(3);
         System.out.println(data);
 
     }

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class DecisionTree {
 
-    private Attribute splitAttr;
+    private int splitAttr;
     private DataSet root;
     private ArrayList<DecisionTree> children;
 
@@ -14,7 +14,8 @@ public class DecisionTree {
     }
 
     public void splitOnAttributeIndex(int a) {
-        splitAttr = root.getAttribute(a);
-        children = root.splitOnAttributeIndex(a);
+        splitAttr = a;
+        DataSet copy = DataSet.duplicate(root);
+        children = copy.splitOnAttributeIndex(a);
     }
 }

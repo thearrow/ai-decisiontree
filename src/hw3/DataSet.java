@@ -10,6 +10,16 @@ public class DataSet {
         examples = new ArrayList<Example>();
     }
 
+    public static DataSet duplicate(DataSet d) {
+        DataSet newDataSet = new DataSet();
+
+        for (int i = 0; i < d.size(); i++) {
+            newDataSet.addExample(d.getExample(i));
+        }
+
+        return newDataSet;
+    }
+
     public void addExample(String str) {
         Example e = new Example(str);
         examples.add(e);
@@ -21,17 +31,6 @@ public class DataSet {
 
     public Example getExample(int e) {
         return examples.get(e);
-    }
-
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < examples.size(); i++) {
-            sb.append("Example ");
-            sb.append(i);
-            sb.append(": ");
-            sb.append(examples.get(i));
-        }
-        return sb.toString();
     }
 
     public Attribute getAttribute(int a) {
@@ -65,4 +64,18 @@ public class DataSet {
         return result;
     }
 
+    public int size(){
+        return examples.size();
+    }
+
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < examples.size(); i++) {
+            sb.append("Example ");
+            sb.append(i);
+            sb.append(": ");
+            sb.append(examples.get(i));
+        }
+        return sb.toString();
+    }
 }
