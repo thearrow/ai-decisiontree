@@ -64,6 +64,30 @@ public class DataSet {
         return result;
     }
 
+    public ArrayList<String> getAllPossibleTargets() {
+        ArrayList<String> targets = new ArrayList<String>();
+
+        for (Example e : examples) {
+            if(!targets.contains(e.getTarget())) {
+                targets.add(e.getTarget());
+            }
+        }
+
+        return targets;
+    }
+
+    public int getCountOfTarget(String t) {
+        int count = 0;
+
+        for (Example e : examples) {
+            if (e.getTarget().equalsIgnoreCase(t)) {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
     public int size() {
         return examples.size();
     }

@@ -26,6 +26,7 @@ public class Main {
 
         DecisionTree tree = new DecisionTree(data);
         tree.splitOnAttributeIndex(3);
+        double g = tree.calculateGain();
         System.out.println(data);
 
     }
