@@ -37,6 +37,10 @@ public class DataSet {
         return examples.get(0).getAttribute(a);
     }
 
+    public int numAttributes() {
+        return examples.get(0).numAttributes();
+    }
+
     public ArrayList<DecisionTree> splitOnAttributeIndex(int a) {
         ArrayList<DecisionTree> result = new ArrayList<DecisionTree>();
         ArrayList<Example> tempExamples = examples;
@@ -86,6 +90,19 @@ public class DataSet {
         }
 
         return count;
+    }
+
+    public boolean hasSingleTarget(){
+        boolean result = true;
+        String target = examples.get(0).getTarget();
+
+        for (Example e : examples) {
+            if (!e.getTarget().equalsIgnoreCase(target)) {
+                result = false;
+            }
+        }
+
+        return result;
     }
 
     public int size() {

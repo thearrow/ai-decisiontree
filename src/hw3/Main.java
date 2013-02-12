@@ -9,14 +9,16 @@ public class Main {
 
     public static void main(String[] args) {
 
-        DataSet data = new DataSet();
+        DataSet train = new DataSet();
+        DataSet test = new DataSet();
+        DecisionTree tree;
 
         try {
             BufferedReader reader = new BufferedReader(new FileReader(args[0]));
 
             String line;
             while ((line = reader.readLine()) != null) {
-                data.addExample(line);
+                train.addExample(line);
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -24,10 +26,21 @@ public class Main {
             e.printStackTrace();
         }
 
-        DecisionTree tree = new DecisionTree(data);
-        tree.splitOnAttributeIndex(3);
-        double g = tree.calculateGain();
-        System.out.println(data);
+        tree = new DecisionTree(train);
+        tree.Learn();
+
+        try {
+            BufferedReader reader2 = new BufferedReader(new FileReader(args[1]));
+
+            String line;
+            while ((line = reader2.readLine()) != null) {
+                test.addExample(line);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 

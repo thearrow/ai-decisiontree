@@ -33,6 +33,10 @@ public class Example {
         return attributes.get(a);
     }
 
+    public int numAttributes() {
+        return attributes.size();
+    }
+
     public String toString() {
         StringBuilder result = new StringBuilder();
         for (Attribute a : attributes) {

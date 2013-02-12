@@ -52,4 +52,34 @@ public class DecisionTree {
         return -entropy;
     }
 
+    public boolean rootHasSingleTarget(){
+        return root.hasSingleTarget();
+    }
+
+    public void Learn() {
+
+        int attributes = root.numAttributes();
+        int bestAttr = 0;
+        double gain,maxGain = 0.0;
+
+        if (!this.rootHasSingleTarget()) {
+
+            for (int i = 0; i < attributes; i++) {
+                this.splitOnAttributeIndex(i);
+                gain = this.calculateGain();
+                if (gain > maxGain) {
+                    maxGain = gain;
+                    bestAttr = i;
+                }
+            }
+
+            this.splitOnAttributeIndex(bestAttr);
+            for (DecisionTree child : children) {
+                child.Learn();
+            }
+        }
+
+
+    }
+
 }
