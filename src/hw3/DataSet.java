@@ -1,5 +1,9 @@
 package hw3;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class DataSet {
@@ -8,6 +12,24 @@ public class DataSet {
 
     public DataSet() {
         examples = new ArrayList<Example>();
+    }
+
+    public DataSet(String filePath) {
+        examples = new ArrayList<Example>();
+
+        //read in data from file
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(filePath));
+
+            String line;
+            while ((line = reader.readLine()) != null) {
+                this.addExample(line);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static DataSet duplicate(DataSet d) {
