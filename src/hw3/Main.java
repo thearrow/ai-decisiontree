@@ -42,6 +42,17 @@ public class Main {
             e.printStackTrace();
         }
 
+        double correct = 0, total = 0;
+        for (int i = 0; i < test.size(); i++) {
+            Example e = test.getExample(i);
+            if (tree.Test(e)) {
+                correct++;
+            }
+            total++;
+        }
+
+        System.out.println("Tree had a " + correct / total * 100 + "% success rate.");
+
     }
 
 }

@@ -19,18 +19,18 @@ public class DecisionTree {
         children = copy.splitOnAttributeIndex(a);
     }
 
-    public int rootSize(){
+    public int rootSize() {
         return root.size();
     }
 
-    public double calculateGain(){
+    public double calculateGain() {
         //entropy of root - sum((#child/#parent)*entropy of child)
 
         double e_root = this.calculateEntropyOfRoot();
         double e_children = 0.0;
 
         for (DecisionTree tree : children) {
-            e_children += ((double)tree.rootSize()/(double)root.size())*tree.calculateEntropyOfRoot();
+            e_children += ((double) tree.rootSize() / (double) root.size()) * tree.calculateEntropyOfRoot();
         }
 
         return e_root - e_children;
@@ -44,15 +44,15 @@ public class DecisionTree {
         int total = root.size();
 
         for (String t : targets) {
-            double pv = (double)root.getCountOfTarget(t)/(double)total;
+            double pv = (double) root.getCountOfTarget(t) / (double) total;
 
-            entropy += pv*(Math.log(pv)/Math.log(2.0));
+            entropy += pv * (Math.log(pv) / Math.log(2.0));
         }
 
         return -entropy;
     }
 
-    public boolean rootHasSingleTarget(){
+    public boolean rootHasSingleTarget() {
         return root.hasSingleTarget();
     }
 
@@ -60,10 +60,9 @@ public class DecisionTree {
 
         int attributes = root.numAttributes();
         int bestAttr = 0;
-        double gain,maxGain = 0.0;
+        double gain, maxGain = 0.0;
 
         if (!this.rootHasSingleTarget()) {
-
             for (int i = 0; i < attributes; i++) {
                 this.splitOnAttributeIndex(i);
                 gain = this.calculateGain();
@@ -78,8 +77,30 @@ public class DecisionTree {
                 child.Learn();
             }
         }
+    }
 
+    public boolean Test(Example e) {
+        boolean correct = false;
 
+        String attr = e.getAttribute(this.splitAttr).getValue();
+
+        if (children.size() == 0) {
+            String predictedTarget = root.getExample(0).getTarget();
+            if (e.getTarget().equalsIgnoreCase(predictedTarget)) {
+                return true;
+            } else {
+                System.out.println("Predicted: " + predictedTarget + ", Actual: " + e.getTarget());
+                System.out.println("For Test Data: " + e + "\n");
+            }
+        }
+
+        for (DecisionTree child : children) {
+            if (attr.equalsIgnoreCase(child.root.getAttribute(splitAttr).getValue())) {
+                correct = child.Test(e);
+            }
+        }
+
+        return correct;
     }
 
 }

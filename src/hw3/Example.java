@@ -39,13 +39,14 @@ public class Example {
 
     public String toString() {
         StringBuilder result = new StringBuilder();
+        result.append("(");
         for (Attribute a : attributes) {
             result.append(a);
             result.append(", ");
         }
         result.append("Target: ");
         result.append(target);
-        result.append("\n");
+        result.append(")");
 
         return result.toString();
     }

@@ -41,6 +41,10 @@ public class DataSet {
         return examples.get(0).numAttributes();
     }
 
+    public int size() {
+        return examples.size();
+    }
+
     public ArrayList<DecisionTree> splitOnAttributeIndex(int a) {
         ArrayList<DecisionTree> result = new ArrayList<DecisionTree>();
         ArrayList<Example> tempExamples = examples;
@@ -72,7 +76,7 @@ public class DataSet {
         ArrayList<String> targets = new ArrayList<String>();
 
         for (Example e : examples) {
-            if(!targets.contains(e.getTarget())) {
+            if (!targets.contains(e.getTarget())) {
                 targets.add(e.getTarget());
             }
         }
@@ -92,7 +96,7 @@ public class DataSet {
         return count;
     }
 
-    public boolean hasSingleTarget(){
+    public boolean hasSingleTarget() {
         boolean result = true;
         String target = examples.get(0).getTarget();
 
@@ -103,10 +107,6 @@ public class DataSet {
         }
 
         return result;
-    }
-
-    public int size() {
-        return examples.size();
     }
 
     public String toString() {
