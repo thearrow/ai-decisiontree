@@ -51,7 +51,7 @@ public class Main {
             total++;
         }
 
-        System.out.println("Tree had a " + correct / total * 100 + "% success rate.");
+        System.out.println("Learner was " + correct / total * 100 + "% accurate.");
 
     }
 
