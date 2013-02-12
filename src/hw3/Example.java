@@ -1,8 +1,9 @@
 package hw3;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Example {
+public class Example implements Serializable {
 
     ArrayList<Attribute> attributes;
     private String target;

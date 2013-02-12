@@ -1,12 +1,9 @@
 package hw3;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 
-public class DataSet {
+public class DataSet implements Serializable {
 
     private ArrayList<Example> examples;
 
@@ -26,9 +23,9 @@ public class DataSet {
                 this.addExample(line);
             }
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            System.out.println("Error creating DataSet. Couldn't find the input file: "+filePath);
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Error creating DataSet.");
         }
     }
 

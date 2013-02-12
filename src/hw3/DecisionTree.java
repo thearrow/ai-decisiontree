@@ -1,8 +1,9 @@
 package hw3;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class DecisionTree {
+public class DecisionTree implements Serializable {
 
     private int splitAttr;
     private DataSet root;

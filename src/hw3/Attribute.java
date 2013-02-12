@@ -1,6 +1,8 @@
 package hw3;
 
-public class Attribute {
+import java.io.Serializable;
+
+public class Attribute implements Serializable {
 
     private String value;
 
